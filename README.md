@@ -8,7 +8,7 @@ Nandita Balasubramanian (nandita.sbalaji@gmail.com)
 
 University of Texas at Dallas (UTD)
 
-February 2017
+March 2017
 
 An Automated coverage collection tool that can capture the statement coverage for the program under test.
 
