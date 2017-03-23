@@ -1,14 +1,14 @@
-# Java-code-coverage-Tool
+Java Code Coverage Tool
+===========================
 
-Authors
+## Authors ##
 
-Jithin Paul (paul.jitin@gmail.com)
+* Jithin Paul (paul.jitin@gmail.com)
+* Nandita Balasubramanian (nandita.sbalaji@gmail.com)
 
-Nandita Balasubramanian (nandita.sbalaji@gmail.com)
-
-University of Texas at Dallas (UTD)
-
+##### University of Texas at Dallas (UTD) #####
 March 2017
+
 
 An Automated coverage collection tool that can capture the statement coverage for the program under test.
 
