@@ -3,6 +3,7 @@
 Authors
 
 Jithin Paul (paul.jitin@gmail.com)
+
 Nandita Balasubramanian (nandita.sbalaji@gmail.com)
 
 University of Texas at Dallas (UTD)
