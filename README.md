@@ -19,7 +19,7 @@ test method. The agent jar file and the JUnit listener class can be integrated w
 Following needs to be added to the pom.xml file.
 1) Replace [path-to-your-agent.jar] with your java agent jar’s absolute path, and 
 replace [YourListener] with your JUnit listener’s full name.
-<pre>
+```
 <plugin>
 <groupId>org.apache.maven.plugins</groupId>
 <artifactId>maven-surefire-plugin</artifactId>
@@ -33,11 +33,11 @@ replace [YourListener] with your JUnit listener’s full name.
 </properties>
 </configuration>
 </plugin>
-</pre>
+```
 2) Add the agent.jar file as a dependency as it is used by the 'Listener.java' file. 
 (The following dependency was written for my 'JPAgent.jar' file which is attached 
 in the repository for your reference)
-<pre>
+```
 <dependency>
 <artifactId>TestCompetition.JavaAgent</artifactId>
 <groupId>JPAgent</groupId>
@@ -45,25 +45,24 @@ in the repository for your reference)
 <scope>system</scope>
 <systemPath>${basedir}/JPAgent.jar</systemPath>
 </dependency>
-</pre>
+```
 3) Add the asm package as a dependency if needed as it is used by multiple files.
-
-<pre>
+```
 <dependency>
 <groupId>org.ow2.asm</groupId>
 <artifactId>asm</artifactId>
 <version>5.0.3</version>
 </dependency>
-</pre>
+```
 4) Add the junit package as a dependency if needed.
-<pre>
+```
 <dependency>
 <groupId>junit</groupId>
 <artifactId>junit</artifactId>
 <version>4.11</version>
 <scope>test</scope>
 </dependency>
-</pre>
+```
 
 When firing “mvn test”, tool will output a file named “stmt-cov.txt” under the project under test. This file will include
 statement coverage information for each test method. Each line in the file represents a test method or a covered statement, while the test
