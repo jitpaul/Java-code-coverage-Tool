@@ -15,10 +15,9 @@ class MethodPrinter extends MethodVisitor implements Opcodes {
     }
 		
 	@Override
-	public void visitLineNumber(int line, Label start) {
-		    mv.visitLdcInsn(line);
-			mv.visitLdcInsn(cName);
-			mv.visitMethodInsn(INVOKESTATIC, "TestCompetition/JavaAgent/StatementCoverageData", "lineExecuted", "(ILjava/lang/String;)V", false);
+	public void visitLineNumber(int line, Label start) {		
+			mv.visitLdcInsn(cName+":"+line+"\n");
+			mv.visitMethodInsn(INVOKESTATIC, "TestCompetition/JavaAgent/StatementCoverageData", "lineExecuted", "(Ljava/lang/String;)V", false);
 			super.visitLineNumber(line, start);
 	}
 }
