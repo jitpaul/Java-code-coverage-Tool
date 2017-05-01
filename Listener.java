@@ -30,21 +30,21 @@ public class Listener extends RunListener
 	
 	public void testRunStarted(Description description) throws java.lang.Exception 
 	{
-        try 
-		{
-		  File file = new File("stmt-cov.txt");
-		  if (file.exists())
-               file.delete();
-          else		   
+          try 
+	  {
+		 File file = new File("stmt-cov.txt");
+		 if (file.exists())
+                       file.delete();
+                 else		   
 		       file.createNewFile();
-		  writer = new FileWriter("stmt-cov.txt",false);
-		}
-		catch (Exception ex) 
-		{
-			ex.printStackTrace();
+		 writer = new FileWriter("stmt-cov.txt",false);
+	  }
+	  catch (Exception ex) 
+	  {
+	          ex.printStackTrace();
 	
-		}
-    }	
+	  }
+        }	
 	/**
 	 *  Called when all tests have finished
 	 * */
@@ -56,7 +56,7 @@ public class Listener extends RunListener
 	public void testFinished(Description description) throws java.lang.Exception
 	{
         StatementCoverageData.writeIntoFile(writer);
-    }
+        }
 
 	/**
 	 *  Called when an atomic test is about to be started.
