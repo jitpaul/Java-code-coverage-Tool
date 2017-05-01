@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package org.joda.time;
+package org.apache.commons.dbutils;
  
 import java.io.*;
 import junit.framework.*;
@@ -23,46 +23,31 @@ import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunListener;
 import TestCompetition.JavaAgent.StatementCoverageData;
+import TestCompetition.JavaAgent.GenerateTestSuiteForJUnit4;
 
 public class Listener extends RunListener
 {
-	static FileWriter writer;
 	
-	public void testRunStarted(Description description) throws java.lang.Exception 
-	{
-        try 
-		{
-		  File file = new File("stmt-cov.txt");
-		  if (file.exists())
-               file.delete();
-          else		   
-		       file.createNewFile();
-		  writer = new FileWriter("stmt-cov.txt",false);
-		}
-		catch (Exception ex) 
-		{
-			ex.printStackTrace();
-	
-		}
-    }	
-	/**
-	 *  Called when all tests have finished
-	 * */
+	//  Called when all tests have finished
 	public void testRunFinished(Result result) throws java.lang.Exception
 	{
-		writer.close();
+		GenerateTestSuiteForJUnit4.generate("T_TestSuite", StatementCoverageData.totalPriorIntoFile());
+		GenerateTestSuiteForJUnit4.generate("A_TestSuite", StatementCoverageData.additionalPriorIntoFile());
 	}
-	
-	public void testFinished(Description description) throws java.lang.Exception
-	{
-        StatementCoverageData.writeIntoFile(writer);
-    }
 
-	/**
-	 *  Called when an atomic test is about to be started.
-	 * */
+	//  Called when an atomic test is about to be started.	 
 	public void testStarted(Description description) throws java.lang.Exception
 	{
-		 writer.write("[TEST] "+description.getClassName()+":"+description.getMethodName() + System.lineSeparator());
+		 StatementCoverageData.testExecuted(description.getClassName(), description.getMethodName()); 
 	}
+	
+	public void testFinished(Description description) throws Exception 
+	{
+        //StatementCoverageData.writeIntoFile();
+    }
+	
+	 public void testFailure(Failure failure) throws Exception 
+	{
+        System.exit(0);
+    }
 }
